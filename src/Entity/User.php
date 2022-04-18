@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -32,6 +34,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'text', nullable: true)]
     private $aPropos;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Oeuvre::class, orphanRemoval: true)]
+    private $oeuvres;
+
+    public function __construct()
+    {
+        $this->oeuvres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAPropos(?string $aPropos): self
     {
         $this->aPropos = $aPropos;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Oeuvre>
+     */
+    public function getOeuvres(): Collection
+    {
+        return $this->oeuvres;
+    }
+
+    public function addOeuvre(Oeuvre $oeuvre): self
+    {
+        if (!$this->oeuvres->contains($oeuvre)) {
+            $this->oeuvres[] = $oeuvre;
+            $oeuvre->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOeuvre(Oeuvre $oeuvre): self
+    {
+        if ($this->oeuvres->removeElement($oeuvre)) {
+            // set the owning side to null (unless already changed)
+            if ($oeuvre->getUser() === $this) {
+                $oeuvre->setUser(null);
+            }
+        }
 
         return $this;
     }
