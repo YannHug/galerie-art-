@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="842fd6e3-f187-4dec-86e3-c9a694215e45" name="Changes" comment=":sparkles: creation relation oeuvre -&gt; user : categorie" />
+    <list default="true" id="842fd6e3-f187-4dec-86e3-c9a694215e45" name="Changes" comment=":sparkles: creation des posts de blog et relation avec user" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +172,7 @@
       <workItem from="1650281316920" duration="131000" />
       <workItem from="1650281464835" duration="22000" />
       <workItem from="1650281494258" duration="1953000" />
-      <workItem from="1650283623733" duration="2434000" />
+      <workItem from="1650283623733" duration="2812000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1650281894449</created>
@@ -216,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650286182599</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=":sparkles: creation des posts de blog et relation avec user">
+      <created>1650286559316</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650286559316</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +249,8 @@
     <MESSAGE value=":sparkles: creation entité categorie" />
     <MESSAGE value=":sparkles: creation entité oeuvre" />
     <MESSAGE value=":sparkles: creation relation oeuvre -&gt; user : categorie" />
-    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: creation relation oeuvre -&gt; user : categorie" />
+    <MESSAGE value=":sparkles: creation des posts de blog et relation avec user" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: creation des posts de blog et relation avec user" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BlogPostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlogPostRepository::class)]
@@ -28,6 +30,14 @@ class BlogPost
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'blogPosts')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
+
+    #[ORM\OneToMany(mappedBy: 'blogPost', targetEntity: Commentaire::class)]
+    private $commentaires;
+
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,36 @@ class BlogPost
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setBlogPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getBlogPost() === $this) {
+                $commentaire->setBlogPost(null);
+            }
+        }
 
         return $this;
     }
