@@ -6,6 +6,8 @@ Activités non rétribuées à titre d'exercice et de pratique.
 Inspiration/Reproduction
 du [live coding de YoanDev](https://www.youtube.com/playlist?list=PLxEJ5uJLOPDys4MgOz78lci7e7g5GoolQ)
 
+Template Elate de [freeHtml5](https://freehtml5.co/)
+
 ## Environnement de développement
 
 ### Pré Requis :
@@ -51,10 +53,4 @@ symfony console doctrine:migrations:migrate
 
 ```bash
 symfony console doctrine:fixtures:load
-```
-
-### Lancer les tests
-
-```bash
-php bin/phpunit --testdox
 ```
